@@ -277,13 +277,9 @@ void PWM_Start(void) {
 		RS485_Send_Data(rs485buf,8);							   
 		delay_ms(1000);
 		RS485_Receive_Data(rs485buf_rec,&key);
-	  shidu= (concatenateAndConvertToDecimal(rs485buf_rec[3],rs485buf_rec[4]))/10.0;
+	   shidu= (concatenateAndConvertToDecimal(rs485buf_rec[3],rs485buf_rec[4]))/10.0;
 		wendu = (concatenateAndConvertToDecimal(rs485buf_rec[5],rs485buf_rec[6]))/10.0;
-		
-		//PH_NUM = (concatenateAndConvertToDecimal(rs485buf_rec[9],rs485buf_rec[10]))/100.0;
 		PH_NUM = (rs485buf_rec[10])/10.0;
-
-		
 		Oled_show();
 
 
@@ -452,8 +448,8 @@ void PWM_owm_Init(void) {
     GPIO_Init(GPIOB, &GPIO_InitStructure);
 
 
-    TIM_TimeBaseStructure.TIM_Period = 999;         // PWMƵ�� = 1MHz / (999 + 1) = 1kHz
-    TIM_TimeBaseStructure.TIM_Prescaler = 71;       // 72MHz / (71 + 1) = 1MHz
+    TIM_TimeBaseStructure.TIM_Period = 999;         
+    TIM_TimeBaseStructure.TIM_Prescaler = 71;      
     TIM_TimeBaseStructure.TIM_ClockDivision = 0;
     TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
     TIM_TimeBaseInit(TIM3, &TIM_TimeBaseStructure);
