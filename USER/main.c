@@ -293,8 +293,8 @@ void Oled_show()
 		{
 			OLED_ColorTurn(0);
 			  sprintf((char *)first_show, "PH:%0.1f",PH_NUM);
-				sprintf((char *)second_show,"Tem:%0.2f C",wendu);
-				sprintf((char *)third_show, "Hum:%0.2f %%",shidu);
+			  sprintf((char *)second_show,"Tem:%0.2f C",wendu);
+		      sprintf((char *)third_show, "Hum:%0.2f %%",shidu);
 				
 				OLED_ShowString(0,0,first_show,16);
 				OLED_ShowString(0,23,second_show,16);
