@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "delay.h": "c",
+        "oled.h": "c"
+    },
+    "C_Cpp.default.compilerPath": ""
+}
