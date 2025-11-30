@@ -13,6 +13,7 @@
 #include "dht11.h"
 #include <string.h>
 
+
 float wendu;
 float shidu;
 float PH_NUM;
