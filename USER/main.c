@@ -13,10 +13,10 @@
 #include "dht11.h"
 #include <string.h>
 
-
 float wendu;
 float shidu;
 float PH_NUM;
+
 
 float light_per;
 float wendu_hs=35.0;
