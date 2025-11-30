@@ -19,6 +19,13 @@ extern float PH_NUM_ls;
 extern float light_per_ls;
 extern float water_per_ls;
 
+extern unsigned int CO2Data_ls ;
+extern unsigned int CO2Data_hs ;
+
+extern unsigned int MQ2_X_per_ls ;
+extern unsigned int MQ2_X_per_hs ;
+
+
 extern int pump_speed;
 extern uint16_t oled_menu;
 								    
@@ -49,8 +56,8 @@ void  KEY_Scan(u8 mode)
 				 BEEP = 1; delay_ms(50);BEEP = 0;
 				 OLED_Clear();	OLED_Refresh();
 				
-				if(oled_menu == 6){TIM_Cmd(TIM3, DISABLE);pump_speed = 0;PWM_StopAndPullLow();}
-				if(oled_menu == 7){oled_menu = 0;}
+//			if(oled_menu == 6){TIM_Cmd(TIM3, DISABLE);pump_speed = 0;PWM_StopAndPullLow();}
+				if(oled_menu == 9){oled_menu = 0;}
 				while((KEY0 == 0));
 			}
 		}
@@ -61,31 +68,39 @@ void  KEY_Scan(u8 mode)
 			delay_ms(5);
 			if(KEY1 == 0)
 			{
-				if(oled_menu == 1)//ph
+				if(oled_menu == 3)//ph
 				{
 					PH_NUM_hs+= 0.5;
 					if(PH_NUM_hs == 10.5)PH_NUM_hs = 0;
 				}
-				if(oled_menu == 2)//ph
-				{
-					wendu_hs+= 1.0;
-					if(wendu_hs == 40.0)wendu_hs = 0;
-				}
-			  if(oled_menu == 3)//ph
-				{
-					shidu_hs+= 1.0;
-					if(shidu_hs == 100.0)shidu_hs = 0;
-				}
 				if(oled_menu == 4)//ph
 				{
-					light_per_hs+= 1.0;
-					if(light_per_hs == 100.0)light_per_hs = 0;
+					shidu_hs+= 1.0;
+					if(shidu_hs == 40.0)shidu_hs = 0;
 				}
-				if(oled_menu == 5)//ph
+			  if(oled_menu == 5)//ph
 				{
-					water_per_hs+= 1.0;
-					if(water_per_hs == 100.0)water_per_hs = 0;
+					wendu_hs+= 1.0;
+					if(wendu_hs == 100.0)wendu_hs = 0;
 				}
+				if(oled_menu == 6)//ph
+				{
+					light_per_hs+= 1.0;
+					if(light_per_hs >= 100.0)light_per_hs = 0;
+				}
+				if(oled_menu == 7)//ph
+				{
+					CO2Data_hs+= 1.0;
+					if(CO2Data_hs >= 1000.0)CO2Data_hs = 0;
+				}
+				
+				if(oled_menu == 8)//ph
+				{
+					MQ2_X_per_hs+= 1.0;
+					if(MQ2_X_per_hs == 100.0)MQ2_X_per_hs = 0;
+				}
+				
+				
 				BEEP = 1; delay_ms(50);BEEP = 0;
 				while((KEY1 == 0));
 				
@@ -96,31 +111,41 @@ void  KEY_Scan(u8 mode)
 			delay_ms(5);
 			if(KEY2 == 0)
 			{
-				if(oled_menu == 1)//ph
+				if(oled_menu == 3)//ph
 				{
 					PH_NUM_hs-= 0.5;
 					if(PH_NUM_hs == 0.0)PH_NUM_hs = 0;
 				}
-				if(oled_menu == 2)//ph
-				{
-					wendu_hs-= 1.0;
-					if(wendu_hs == 0.0)wendu_hs = 0;
-				}
-			  if(oled_menu == 3)//ph
+				if(oled_menu == 4)//ph
 				{
 					shidu_hs-= 1.0;
 					if(shidu_hs == 0.0)shidu_hs = 0;
 				}
-				if(oled_menu == 4)//ph
+			  if(oled_menu == 5)//ph
+				{
+					wendu_hs-= 1.0;
+					if(wendu_hs == 0.0)wendu_hs = 0;
+				}
+				if(oled_menu == 6)//ph
 				{
 					light_per_hs-= 1.0;
 					if(light_per_hs == 0.0)light_per_hs = 0;
 				}
-				if(oled_menu == 5)//ph
+				if(oled_menu == 7)//ph
 				{
-					water_per_hs-= 1.0;
-					if(water_per_hs == 0.0)water_per_hs = 0;
+					CO2Data_hs-= 1.0;
+					if(CO2Data_hs == 0.0)CO2Data_hs = 0;
 				}
+					if(oled_menu == 8)//ph
+				{
+					MQ2_X_per_hs-= 1.0;
+					if(MQ2_X_per_hs == 0.0)MQ2_X_per_hs = 0;
+				}
+
+				
+				
+				
+				
 				BEEP = 1; delay_ms(50);BEEP = 0;
 				while((KEY2 == 0));
 				
@@ -132,31 +157,37 @@ void  KEY_Scan(u8 mode)
 			delay_ms(5);
 			if(KEY3 == 0)
 			{
-				if(oled_menu == 1)//ph
+				if(oled_menu == 3)//ph
 				{
 					PH_NUM_ls+= 0.5;
 					if(PH_NUM_ls == 10.5)PH_NUM_ls = 0;
 				}
-				if(oled_menu == 2)//ph
-				{
-					wendu_ls+= 1.0;
-					if(wendu_ls == 40.0)wendu_ls = 0;
-				}
-				if(oled_menu == 3)//ph
-				{
-					shidu_ls+= 1.0;
-					if(shidu_ls == 100.0)shidu_ls = 0;
-				}
-				
 				if(oled_menu == 4)//ph
 				{
-					light_per_ls+= 1.0;
-					if(light_per_ls == 100.0)light_per_ls = 0;
+					shidu_ls+= 1.0;
+					if(shidu_ls == 40.0)shidu_ls = 0;
 				}
 				if(oled_menu == 5)//ph
 				{
-					water_per_ls+= 1.0;
-					if(water_per_ls == 100.0)water_per_ls = 0;
+					wendu_ls+= 1.0;
+					if(wendu_ls == 100.0)wendu_ls = 0;
+				}
+				
+				if(oled_menu == 6)//ph
+				{
+					light_per_ls+= 1.0;
+					if(light_per_ls >= 100.0)light_per_ls = 0;
+				}
+				if(oled_menu == 7)//ph
+				{
+					CO2Data_ls+= 1.0;
+					if(CO2Data_ls == 0.0)CO2Data_ls = 0;
+				}
+				
+					if(oled_menu == 8)//ph
+				{
+					MQ2_X_per_ls+= 1.0;
+					if(MQ2_X_per_ls == 100.0)MQ2_X_per_ls = 0;
 				}
 				BEEP = 1; delay_ms(50);BEEP = 0;
 				
@@ -170,31 +201,36 @@ void  KEY_Scan(u8 mode)
 			delay_ms(5);
 			if(KEY4 == 0)
 			{
-				if(oled_menu == 1)//ph
+				if(oled_menu == 3)//ph
 				{
 					PH_NUM_ls-= 0.5;
 					if(PH_NUM_ls == 0.0)PH_NUM_ls = 0;
 				}
-				if(oled_menu == 2)//ph
-				{
-					wendu_ls-= 1.0;
-					if(wendu_ls == 0.0)wendu_ls = 0;
-				}
-				if(oled_menu == 3)//ph
+				if(oled_menu == 4)//ph
 				{
 					shidu_ls-= 1.0;
 					if(shidu_ls == 0.0)shidu_ls = 0;
 				}
+				if(oled_menu == 5)//ph
+				{
+					wendu_ls-= 1.0;
+					if(wendu_ls == 0.0)wendu_ls = 0;
+				}
 				
-				if(oled_menu == 4)//ph
+				if(oled_menu == 6)//ph
 				{
 					light_per_ls-= 1.0;
 					if(light_per_ls == 0.0)light_per_ls = 0;
 				}
-				if(oled_menu == 5)//ph
+				if(oled_menu == 7)//ph
 				{
-					water_per_ls-= 1.0;
-					if(water_per_ls == 0.0)water_per_ls = 0;
+					CO2Data_ls-= 1.0;
+					if(CO2Data_ls == 0.0)CO2Data_ls = 0;
+				}
+				if(oled_menu == 8)//ph
+				{
+					MQ2_X_per_ls-= 1.0;
+					if(MQ2_X_per_ls == 0.0)MQ2_X_per_ls = 0;
 				}
 				BEEP = 1; delay_ms(50);BEEP = 0;
 				

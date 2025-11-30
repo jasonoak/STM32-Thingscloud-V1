@@ -5,8 +5,8 @@
 
 
 //Ä£Ê½¿ØÖÆ
-#define UP_PUMP		  PBout(0)	
-#define DOWM_PUMP		PBout(1)	
+#define UP_PUMP		  PBout(8)	
+#define DOWM_PUMP		PBout(9)	
 
 
 
@@ -15,7 +15,6 @@ void Pump_Pin_Init(void);
 
 
 #endif	   
-
 
 
 

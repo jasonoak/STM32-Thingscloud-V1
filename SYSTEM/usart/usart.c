@@ -5,8 +5,8 @@
 #include <string.h>
 ////////////////////////////////////////////////////////////////////////////////// 	 
 #define BUFFER_SIZE 256  // 增大缓冲区以应对可能较长的字符串
-char rx_buffer[BUFFER_SIZE];
-uint8_t rx_index = 0;
+//char rx_buffer[BUFFER_SIZE];
+//uint8_t rx_index = 0;
 extern bool pump_on_off ;
 int pump_int;
 //////////////////////////////////////////////////////////////////
@@ -117,18 +117,44 @@ void parse_string(const char* str) {
 }
 
 
-// 串口1中断服务函数
-void USART1_IRQHandler(void) {
-    if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) {
-        char ch = USART_ReceiveData(USART1);
-    if (ch == '0') {
-        pump_on_off = 0;
-    } else if (ch >= '1' && ch <= '9') {
-        pump_on_off = 1;
-    }
-        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
-    }
-}
+//// 串口1中断服务函数
+//void USART1_IRQHandler(void) {
+//    if (USART_GetITStatus(USART1, USART_IT_RXNE) != RESET) {
+//        char ch = USART_ReceiveData(USART1);
+//    if (ch == '0') {
+//        pump_on_off = 0;
+//    } else if (ch >= '1' && ch <= '9') {
+//        pump_on_off = 1;
+//    }
+//        USART_ClearITPendingBit(USART1, USART_IT_RXNE);
+//    }
+//}
+
+
+//uint8_t received_data;
+//char ch;
+//void USART1_IRQHandler(void)
+//{
+//    if(USART_GetITStatus(USART1, USART_IT_RXNE) != RESET)
+//    {
+//		    USART_ClearITPendingBit(USART1, USART_IT_RXNE);   // 清除接收中断标志
+//        ch = USART_ReceiveData(USART1);  // 自动清除RXNE中断标志
+//		    rx_buffer[rx_index++] = ch;
+//			
+//			
+////		if (ch == 0x0A)
+////		{
+////			TEMP = (int)rx_buffer[1]-48;
+////			HUM = (int)rx_buffer[3]-48;
+////			GAS = (int)rx_buffer[5]-48;
+////			FIRE =(int) rx_buffer[7]-48;
+////			door = (int)rx_buffer[9]-48;
+
+////			rx_index = 1;
+////		}
+
+//    }
+//}
 
 #endif	
 

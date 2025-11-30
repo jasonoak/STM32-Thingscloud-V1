@@ -14,7 +14,7 @@
 //All rights reserved									  
 ////////////////////////////////////////////////////////////////////////////////// 
 
-#define BEEP PCout(16)// PE5	//改回PC13
+#define BEEP PCout(13)// PE5	//改回PC13
 #define FANS PCout(14)// PE5	
 #define LED0 PCout(15)// PB5
 

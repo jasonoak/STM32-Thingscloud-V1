@@ -26,10 +26,11 @@
                 "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485\\HARDWARE\\PUMP",
                 "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485\\HARDWARE\\LEVEL",
                 "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485\\HARDWARE\\OLED",
+                "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485\\HARDWARE\\SGP30",
+                "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485\\HARDWARE\\DHT11",
                 "E:\\Keil\\KeilArm\\ARM\\ARMCC\\include",
                 "E:\\Keil\\KeilArm\\ARM\\ARMCC\\include\\rw",
                 "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485\\STM32F10x_FWLib\\src",
-                "c:\\Users\\22361\\Desktop\\【2】stm32代码2\\485",
                 "${default}"
             ],
             "defines": [
